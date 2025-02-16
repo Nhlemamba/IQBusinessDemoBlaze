@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
             features = {"src/test/resources/Features"},
             glue = {"Steps"},
      //       plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-            tags =  "@addingToCart",publish = true
+            tags =  "@regression",publish = true
     )
     public class runner extends AbstractTestNGCucumberTests {
 

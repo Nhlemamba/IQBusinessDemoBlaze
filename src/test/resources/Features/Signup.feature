@@ -17,7 +17,7 @@ Feature: User Signup
       | Ze2r1    | password123 |
 
 
-  @addingToCart
+  @addingToCart @regression
   Scenario Outline: Add items to cart
     When I click login
     And I log in with username <username> and password <password>
@@ -27,13 +27,19 @@ Feature: User Signup
     And I open the cart page
     Then all items should be displayed in the cart
     And the total amount should be visible
+    And the order form is displayed
+    When I enter my username to fill form
+    And I enter country
+    And I enter city
+    And I enter my Credit Card number
+    And I enter the month
+    And I enter the year
+    And I click the purchase button
+    Then the order confirmation should be displayed
 
     Examples:
       | username | password    |
       | te2r1    | password123 |
-
-
-
 
 
 

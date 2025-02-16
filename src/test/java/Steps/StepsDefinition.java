@@ -3,9 +3,12 @@ package Steps;
 import Pages.CartPage;
 import Pages.HomePage;
 import Pages.IndexPage;
+import Pages.PlaceOrderPage;
 import Utilities.BrowserFactory;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Map;
 
 public class StepsDefinition {
     WebDriver driver;
@@ -14,6 +17,7 @@ public class StepsDefinition {
     IndexPage indexPage;
     HomePage homePage;
     CartPage cartPage;
+    PlaceOrderPage placeOrderPage;
 
     @Given("I am on the demoblaze landing page")
     public void i_am_on_the_demoblaze_landing_page() {
@@ -104,6 +108,52 @@ public class StepsDefinition {
 
     }
 
+    @And("the order form is displayed")
+    public void the_order_form_is_displayed() {
+        cartPage.placeOrder();
+
+    }
+    @When("I enter my username to fill form")
+    public void i_enter_my_username_to_fill_form() {
+        placeOrderPage = new PlaceOrderPage(driver);
+        placeOrderPage.enterUserName();
+
+    }
+    @And("I enter country")
+    public void i_enter_country() {
+        placeOrderPage.enterCountryName();
+
+    }
+    @And("I enter city")
+    public void i_enter_city() {
+        placeOrderPage.enterCityName();
+
+    }
+    @And("I enter my Credit Card number")
+    public void i_enter_my_credit_card_number() {
+        placeOrderPage.enterCreditCard();
+
+    }
+    @And("I enter the month")
+    public void i_enter_the_month() {
+        placeOrderPage.enterMonth();
+
+    }
+    @And("I enter the year")
+    public void i_enter_the_year() {
+        placeOrderPage.enterYear();
+
+    }
+    @And("I click the purchase button")
+    public void i_click_the_purchase_button() {
+        placeOrderPage.clickPurchase();
+
+    }
+    @Then("the order confirmation should be displayed")
+    public void the_order_confirmation_should_be_displayed() {
+        placeOrderPage.getConfirmationOrderNumber();
+
+    }
 
 
 }

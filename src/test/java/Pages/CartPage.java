@@ -43,6 +43,9 @@ public class CartPage {
         System.out.println(totalAmountOnCart_xpath.getText());
         Assert.assertEquals(totalAmountOnCart_xpath.getText(),"1530");
     }
+    public void placeOrder(){
+        placeOrderButton.click();
+    }
 
 
 
