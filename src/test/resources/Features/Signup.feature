@@ -25,7 +25,7 @@ Feature: User Signup
     When I add an Asus Monitor to the cart
     And I add a Nexus phone to the cart
     And I open the cart page
-    Then both items should be displayed in the cart
+    Then all items should be displayed in the cart
     And the total amount should be visible
 
     Examples:

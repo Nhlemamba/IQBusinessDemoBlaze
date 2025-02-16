@@ -1,9 +1,13 @@
 package Pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.time.Duration;
 
 public class HomePage {
     WebDriver driver;
@@ -29,16 +33,14 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(.,'Nexus 6')]")
     WebElement nexusPhone_xpath;
 
-    @FindBy(xpath = "//a[@id='cartur']")
-    WebElement cartLink_xpath;
-
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
 
     }
     public void confirmHomePageLoaded(){
-        homePageConfirmation_xpath.getText();
+        System.out.println(homePageConfirmation_xpath.getText());
+     //   Assert.assertEquals(homePageConfirmation_xpath.getText(), "welcomete2r1");
 
     }
 
@@ -61,8 +63,20 @@ public class HomePage {
     public void clickNexusPhone(){
         nexusPhone_xpath.click();
     }
-    public void addPhonesToCart(){
-        addToCart_xpath.click();
+    public void addedToCartPopUp(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            String alertText = alert.getText();
+            Assert.assertTrue(alertText.contains("Product added"), "Product added.");
+
+            alert.accept();
+
+        } catch (TimeoutException e) {
+            Assert.fail("Alert not displayed within timeout.");
+        } catch (NoAlertPresentException e) {
+            Assert.fail("No alert present.");
+        }
     }
 
 
