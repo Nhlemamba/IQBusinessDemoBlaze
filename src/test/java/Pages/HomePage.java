@@ -8,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
     WebDriver driver;
 
+    @FindBy(xpath = "//*[@id='nameofuser']")
+    WebElement homePageConfirmation_xpath;
+
     @FindBy(xpath = "//a[contains(.,'Monitors')]")
     WebElement monitors_xpath;
 
@@ -34,6 +37,11 @@ public class HomePage {
         PageFactory.initElements(driver,this);
 
     }
+    public void confirmHomePageLoaded(){
+        homePageConfirmation_xpath.getText();
+
+    }
+
 
     public void clickMonitorsLink(){
         monitors_xpath.click();

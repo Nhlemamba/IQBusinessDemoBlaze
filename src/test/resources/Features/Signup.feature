@@ -14,30 +14,26 @@ Feature: User Signup
 
     Examples:
       | username | password    |
+      | Ze2r1    | password123 |
+
+
+  @addingToCart
+  Scenario Outline: Add items to cart
+    When I click login
+    And I log in with username <username> and password <password>
+    Then I should see the homepage
+    When I add an Asus Monitor to the cart
+    And I add a Nexus phone to the cart
+    And I open the cart page
+    Then both items should be displayed in the cart
+    And the total amount should be visible
+
+    Examples:
+      | username | password    |
       | te2r1    | password123 |
 
 
-@addingToCart
-  Scenario Outline: Add items to cart
-    When I click login
-    And I enter login username <username>
-    And I enter login password <password>
-    And I click login button
-    Then the homepage is displayed
-    When I navigate to Monitor
-    And I click Asus monitor
-    And I click add to cart
-    And I click home page
-    And I click Phones
-    And I click Nexus
-    And I click add to cart
-    And I click cart page
-    Then the items are displayed
-    And the total amount is displayed
 
-    Examples:
-      | username  | password |
-      | userGH251 | test3    |
 
 
 
