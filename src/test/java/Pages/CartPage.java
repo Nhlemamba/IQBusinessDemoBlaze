@@ -23,6 +23,7 @@ public class CartPage {
     @FindBy(xpath = "//button[contains(.,'Place Order')]")
     WebElement placeOrderButton;
 
+    //initialising the elements with the current object
     public CartPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);

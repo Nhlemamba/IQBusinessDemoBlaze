@@ -12,6 +12,7 @@ import java.time.Duration;
 public class HomePage {
     WebDriver driver;
 
+//The elements to be used or interacted with on this page
     @FindBy(xpath = "//*[@id='nameofuser']")
     WebElement homePageConfirmation_xpath;
 
@@ -33,6 +34,7 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(.,'Nexus 6')]")
     WebElement nexusPhone_xpath;
 
+//initialising the elements with the current object
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -43,7 +45,7 @@ public class HomePage {
      //   Assert.assertEquals(homePageConfirmation_xpath.getText(), "welcomete2r1");
 
     }
-
+// creating methods that can be used in the step definitions
 
     public void clickMonitorsLink(){
         monitors_xpath.click();

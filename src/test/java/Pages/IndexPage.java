@@ -37,10 +37,7 @@ public class IndexPage {
     @FindBy(xpath = "//button[contains(.,'Log in')]")
     WebElement loginButton;
 
-    @FindBy(id = "signInModal")
-    WebElement signInModal_id;
-
-
+    //initialising the elements with the current object
     public IndexPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -63,6 +60,8 @@ public class IndexPage {
         signUpButton_xpath.click();
     }
 
+    //waiting for the pop up and asserting the message
+
     public void verifySignUpPopUp() {
 
         try {
@@ -82,20 +81,6 @@ public class IndexPage {
 
     }
 
-    public void signAlert() throws InterruptedException {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            String alertText = alert.getText();
-            Assert.assertTrue(alertText.contains("Sign up successful"), "Alert text mismatch!");
-            //   alert.accept();
-            System.out.println(alertText);
-        } catch (TimeoutException e) {
-            Assert.fail("Alert not displayed within timeout.");
-        } catch (NoAlertPresentException e) {
-            Assert.fail("No alert present.");
-        }
-    }
 
     public void clickLogin() {
         login_xpath.click();

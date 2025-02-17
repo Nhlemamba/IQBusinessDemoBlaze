@@ -12,6 +12,9 @@ import java.time.Duration;
 
 public class PlaceOrderPage {
     WebDriver driver;
+    // using Java faker to get data
+
+    //Instantiating the java faker
     Faker faker = new Faker();
 
     String name = faker.name().fullName();
@@ -20,6 +23,7 @@ public class PlaceOrderPage {
     String creditCard = faker.business().creditCardNumber();
     String month = "May";
     String year ="1957";
+
 
     @FindBy(xpath = "//input[@id='name']")
     WebElement name_xpath;
@@ -45,6 +49,7 @@ public class PlaceOrderPage {
     @FindBy(xpath = "//p[contains(@class,'lead text-muted ')]")
     WebElement successMessage_xpath;
 
+    //initialising the elements with the current object
 
     public PlaceOrderPage(WebDriver driver) {
         this.driver = driver;
