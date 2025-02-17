@@ -1,4 +1,4 @@
-@signup
+@signup @regression
 Feature: User Signup
   As a new user, I want to create an account so that I can access the application.
 
