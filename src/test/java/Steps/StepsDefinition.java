@@ -5,7 +5,11 @@ import Pages.HomePage;
 import Pages.IndexPage;
 import Pages.PlaceOrderPage;
 import Utilities.BrowserFactory;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -154,6 +158,17 @@ public class StepsDefinition {
         placeOrderPage.getConfirmationOrderNumber();
         placeOrderPage.clickOKButton();
 
+    }
+    @AfterStep
+    public void addScreenshot(Scenario scenario){
+        if (scenario.isFailed()){
+            byte[] screenshot=((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","failed image");
+        }else {
+            byte[] screenshot=((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","passed image");
+
+        }
     }
 
 
