@@ -152,6 +152,7 @@ public class StepsDefinition {
     @Then("the order confirmation should be displayed")
     public void the_order_confirmation_should_be_displayed() {
         placeOrderPage.getConfirmationOrderNumber();
+        placeOrderPage.clickOKButton();
 
     }
 

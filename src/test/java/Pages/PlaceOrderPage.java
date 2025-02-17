@@ -49,6 +49,9 @@ public class PlaceOrderPage {
     @FindBy(xpath = "//p[contains(@class,'lead text-muted ')]")
     WebElement successMessage_xpath;
 
+    @FindBy(xpath = "//button[contains(.,'OK')]")
+    WebElement clickOK_xpath;
+
     //initialising the elements with the current object
 
     public PlaceOrderPage(WebDriver driver) {
@@ -57,7 +60,7 @@ public class PlaceOrderPage {
     }
 
     public void enterUserName(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(name_xpath));
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(name_xpath));
         name_xpath.sendKeys(name);
     }
 
@@ -89,6 +92,9 @@ public class PlaceOrderPage {
         successMessage_xpath.getText();
         String uniqueId = successMessage_xpath.getText().substring(0,10);
         System.out.println(uniqueId);
+    }
+    public void clickOKButton(){
+        clickOK_xpath.click();
     }
 
 }
