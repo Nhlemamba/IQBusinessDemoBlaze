@@ -5,6 +5,7 @@ import Pages.HomePage;
 import Pages.IndexPage;
 import Pages.PlaceOrderPage;
 import Utilities.BrowserFactory;
+import Utilities.ConfigReader;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
@@ -159,6 +160,43 @@ public class StepsDefinition {
         placeOrderPage.clickOKButton();
 
     }
+    @Given("I enter sign up credentials from properties file")
+    public void i_enter_sign_up_credentials_from_properties_file() {
+        String username = ConfigReader.getProperty("username");
+        String password = ConfigReader.getProperty("password");
+        indexPage.enterUserName(username);
+        indexPage.enterPassword(password);
+
+    }
+
+    @When("I log in with credentials from properties file")
+    public void i_log_in_with_credentials_from_properties_file() {
+        String username = ConfigReader.getProperty("username");
+        String password = ConfigReader.getProperty("password");
+        indexPage.enterLoginUserName(username);
+        indexPage.enterLoginPassword(password);
+        indexPage.clickLoginButton();
+
+
+    }
+    @When("I enter shipping details from properties file")
+    public void i_enter_shipping_details_from_properties_file() {
+        String name = ConfigReader.getProperty("name");
+        String country = ConfigReader.getProperty("country");
+        String city = ConfigReader.getProperty("city");
+        String creditCard = ConfigReader.getProperty("creditCard");
+        String month = ConfigReader.getProperty("month");
+        String year = ConfigReader.getProperty("year");
+        placeOrderPage.enterUserName();
+        placeOrderPage.enterCountryName();
+        placeOrderPage.enterCityName();
+        placeOrderPage.enterCreditCard();
+        placeOrderPage.enterMonth();
+        placeOrderPage.enterYear();
+
+    }
+
+
     @AfterStep
     public void addScreenshot(Scenario scenario){
         if (scenario.isFailed()){

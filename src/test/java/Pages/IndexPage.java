@@ -49,6 +49,7 @@ public class IndexPage {
     }
 
     public void enterUserName(String username) {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(username_xpath));
         username_xpath.sendKeys(username);
     }
 
